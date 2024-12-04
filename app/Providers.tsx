@@ -25,7 +25,9 @@ export default function Providers({ children }) {
 }
 
 const Container = ({ children }) => {
-  const isSigned = useSelector((state) => state.isSigned);
+  const isSigned = useSelector(
+    (state: { isSigned: boolean }) => state.isSigned
+  );
   const dispatch = useDispatch();
   const router = useRouter();
   const auth = localStorage.getItem("auth");
