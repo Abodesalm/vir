@@ -34,21 +34,21 @@
 }
 
 .side-pad {
-  padding: 2rem 4rem;
+  padding: 1.2rem 2.4rem;
 }
 @media screen and (max-width: 1300px) {
   .side-pad {
-    padding: 2rem 3rem;
+    padding: 1.2rem 2.2rem;
   }
 }
 @media screen and (max-width: 1024px) {
   .side-pad {
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
   }
 }
 @media screen and (max-width: 720px) {
   .side-pad {
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
   }
 }
 @media screen and (max-width: 500px) {
@@ -268,4 +268,8 @@
 
 .form {
   @apply w-fit p-8 flex flex-col gap-4 items-center drop-shadow rounded-lg;
+}
+
+.dropdown {
+  @apply w-[100px] h-fit flex flex-col p-2 absolute top-[60px] bg-light drop-shadow dark:bg-middark;
 }/*# sourceMappingURL=globals.css.map */

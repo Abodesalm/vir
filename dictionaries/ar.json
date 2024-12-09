@@ -1,0 +1,13 @@
+{
+  "layout": {
+    "navbar": {
+      "signout": "تسجيل الخروج"
+    },
+    "sidebar": {
+      "processor": "المعالجة",
+      "statistics": "الإحصائيات",
+      "documents": "المستندات",
+      "settings": "الإعدادات"
+    }
+  }
+}

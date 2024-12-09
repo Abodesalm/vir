@@ -35,3 +35,7 @@
 .form {
   @apply w-fit p-8 flex flex-col gap-4 items-center drop-shadow rounded-lg;
 }
+
+.dropdown {
+  @apply w-[100px] h-fit flex flex-col p-2 absolute top-[60px] bg-light drop-shadow dark:bg-middark;
+}

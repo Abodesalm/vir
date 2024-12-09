@@ -1,3 +1,3 @@
-export default function Home({}) {
-  return <div className="min-h-[80vh]">Main Section</div>;
+export default async function Home({}) {
+  return <div>Main Section</div>;
 }

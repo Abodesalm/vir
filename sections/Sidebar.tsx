@@ -1,22 +1,30 @@
+import { getSession } from "@/actions";
 import Icon from "@/components/Icon";
+import { Locale } from "@/i18n.config";
+import { getDictionary } from "@/lib/dictionary";
 import Link from "next/link";
 
-const options = [
-  { path: "/", icon: "stats", text: "something" },
-  { path: "/processor", icon: "processor", text: "processor" },
-  { path: "/documents", icon: "docs", text: "documents" },
-  { path: "/lorem-ipsum", icon: "departments", text: "lorem ipsum" },
-  {
-    path: "/settings",
-    icon: "settingsFill",
-    text: "settings",
-    className: "mt-12",
-  },
-];
-
-export default function Sidebar() {
+export default async function Sidebar({ lang }: { lang: Locale }) {
+  const { layout } = await getDictionary(lang);
+  const texts = layout.sidebar;
+  const { isLoged } = await getSession();
+  const options = [
+    { path: `/${lang}`, icon: "stats", text: texts.statistics },
+    { path: `/${lang}/processor`, icon: "processor", text: texts.processor },
+    { path: `/${lang}/documents`, icon: "docs", text: texts.documents },
+    {
+      path: `/${lang}/settings`,
+      icon: "settingsFill",
+      text: texts.settings,
+      className: "mt-12",
+    },
+  ];
   return (
-    <div className="w-[14%] bg-light/50 dark:bg-middark px-6 py-4 flex flex-col items-start gap-4 sticky top-4 ">
+    <div
+      className={`w-[14%] bg-light/50 dark:bg-middark px-6 py-4 flex flex-col items-start gap-4 sticky top-4  ${
+        isLoged ? "" : "hidden"
+      }`}
+    >
       {options.map((el) => {
         return (
           <Option

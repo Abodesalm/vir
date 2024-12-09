@@ -3,4 +3,6 @@ const user = {
   password: "aaa",
 };
 
-export { user };
+/* const auth = localStorage.getItem("auth");
+ */
+export { user /* auth */ };

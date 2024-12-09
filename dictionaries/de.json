@@ -1,0 +1,13 @@
+{
+  "layout": {
+    "navbar": {
+      "signout": "signen out"
+    },
+    "sidebar": {
+      "processor": "processen",
+      "statistics": "statistich",
+      "documents": "documente",
+      "settings": "settingen"
+    }
+  }
+}

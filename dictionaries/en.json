@@ -1,0 +1,18 @@
+{
+  "layout": {
+    "navbar": {
+      "signout": "sign out"
+    },
+    "sidebar": {
+      "statistics": "statistics",
+      "processor": "processor",
+      "documents": "documents",
+      "settings": "settings"
+    }
+  },
+  "signin": {
+    "title": "hello, sign in",
+    "button": "sign in",
+    "error": "wrong cridentials!"
+  }
+}

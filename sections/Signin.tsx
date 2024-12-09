@@ -1,55 +1,34 @@
 "use client";
-
-import Button from "@/components/Button";
-import { user } from "@/public/data";
-import { signIn } from "@/redux/slices/isSigned-slice";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { login } from "@/actions";
+import { useFormState } from "react-dom";
 
 export default function Signin() {
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
-  const [error, setError] = useState(<p></p>);
-  const dispatch = useDispatch();
-
-  const log = () => {
-    if (email === user.email && password === user.password) {
-      dispatch(signIn());
-      localStorage.setItem("auth", "true");
-    } else {
-      setError(<p className="text-danger">email or password is wrong!</p>);
-    }
-  };
+  const [state, formAction] = useFormState<any, FormData>(login, undefined);
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <form
-        className="form bg-light dark:bg-middark"
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
+    <div className={`flex justify-center items-center h-[70vh] w-full`}>
+      <form className="form bg-light dark:bg-middark" action={formAction}>
         <p className="capitalize text-size-3">hello, sign in...</p>
         <input
           type="email"
           placeholder="email"
+          name="email"
           className="input"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
+          required
         />
         <input
           type="password"
           placeholder="password"
+          name="password"
           className="input"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
+          required
         />
-        <Button action={log} style="prime" className="mt-4">
+        <button className="btn-prime mt-4">
           <>sign in</>
-        </Button>
-        {error}
+        </button>
+        {state?.error && (
+          <p className="text-danger text-size-6">{state.error}</p>
+        )}
       </form>
     </div>
   );
