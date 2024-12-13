@@ -1,0 +1,17 @@
+{
+  "layoutNavbar": {
+    "signout": "signen out"
+  },
+
+  "layoutSidebar": {
+    "statistics": "statistiche",
+    "processor": "processoren",
+    "documents": "documente",
+    "settings": "settinch"
+  },
+  "signin": {
+    "title": "hallo, signen in",
+    "button": "signen in",
+    "error": "wronge cridentialen!"
+  }
+}

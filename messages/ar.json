@@ -1,0 +1,17 @@
+{
+  "layoutNavbar": {
+    "signout": "تسجيل خروج"
+  },
+
+  "layoutSidebar": {
+    "statistics": "إحصائيات",
+    "processor": "معالجة",
+    "documents": "مستندات",
+    "settings": "إعدادات"
+  },
+  "signin": {
+    "title": "مرحبا ، سجّل دخولك",
+    "button": "تسجيل دخول",
+    "error": "بيانات خاطئة !"
+  }
+}

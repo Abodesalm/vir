@@ -1,21 +1,21 @@
 import { getSession } from "@/actions";
 import Icon from "@/components/Icon";
-import { Locale } from "@/i18n.config";
-import { getDictionary } from "@/lib/dictionary";
+import { getTranslations, getLocale } from "next-intl/server";
+import { useLocale } from "next-intl";
 import Link from "next/link";
 
-export default async function Sidebar({ lang }: { lang: Locale }) {
-  const { layout } = await getDictionary(lang);
-  const texts = layout.sidebar;
+export default async function Sidebar() {
+  const locale = await getLocale();
+  const t = await getTranslations("layoutSidebar");
   const { isLoged } = await getSession();
   const options = [
-    { path: `/${lang}`, icon: "stats", text: texts.statistics },
-    { path: `/${lang}/processor`, icon: "processor", text: texts.processor },
-    { path: `/${lang}/documents`, icon: "docs", text: texts.documents },
+    { path: `/${locale}`, icon: "stats", text: t("statistics") },
+    { path: `/${locale}/processor`, icon: "processor", text: t("processor") },
+    { path: `/${locale}/documents`, icon: "docs", text: t("documents") },
     {
-      path: `/${lang}/settings`,
+      path: `/${locale}/settings`,
       icon: "settingsFill",
-      text: texts.settings,
+      text: t("settings"),
       className: "mt-12",
     },
   ];

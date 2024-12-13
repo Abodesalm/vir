@@ -9,7 +9,10 @@ const email = "ui@virgo.com";
 const password = "aaa";
 
 export const getSession = async () => {
-  const session = await getIronSession<SessionData>(cookies(), sessionOptions);
+  const session = await getIronSession<SessionData>(
+    await cookies(),
+    sessionOptions
+  );
   if (!session.isLoged) {
     session.isLoged = defaultSession.isLoged;
   }

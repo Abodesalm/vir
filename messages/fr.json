@@ -1,0 +1,17 @@
+{
+  "layoutNavbar": {
+    "signout": "la sign out"
+  },
+
+  "layoutSidebar": {
+    "statistics": "les statistics",
+    "processor": "le processor",
+    "documents": "les documents",
+    "settings": "les settings"
+  },
+  "signin": {
+    "title": "salut, sign in",
+    "button": "sign in",
+    "error": "des wrong cridentials!"
+  }
+}

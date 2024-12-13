@@ -1,12 +1,8 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    domains: ["zed-games-api.onrender.com"],
-  },
-  i18n: {
-    locales: ["en", "ar", "fr", "de"],
-    defaultLocale: "en",
-  },
-};
+import createNextIntlPlugin from "next-intl/plugin";
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
+
+/** @type {import('next'.NextConfig)} */
+const nextConfig = {};
+
+export default withNextIntl(nextConfig);

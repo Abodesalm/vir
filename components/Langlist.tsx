@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import Button from "./Button";
 import Icon from "./Icon";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { i18n } from "@/i18n.config";
+import { usePathname, useRouter } from "next/navigation";
 
 const langs = [
   { name: "English", code: "en" },
@@ -15,7 +13,15 @@ const langs = [
 ];
 
 export default function Langlist() {
-  const [selectedLang, setSelectedLang] = useState("English");
+  const Locale = usePathname().split("/")[1];
+
+  const activeLocale = langs.find((el) => {
+    return el.code === Locale;
+  });
+
+  const [selectedLang, setSelectedLang] = useState<string | undefined>(
+    activeLocale?.name
+  );
   const [opened, setOpened] = useState(false);
 
   return (
@@ -38,6 +44,7 @@ export default function Langlist() {
             return (
               <Item
                 key={el.code}
+                code={el.code}
                 title={el.name}
                 setSelected={setSelectedLang}
                 setOpened={setOpened}
@@ -50,29 +57,23 @@ export default function Langlist() {
   );
 }
 
-const Item = ({ key, title, setSelected, setOpened }) => {
-  const pathName = usePathname();
-
-  const redirectedPath = (locale: string) => {
-    if (!pathName) return "/";
-    const segments = pathName.split("/");
-    console.log(segments[1]);
-    segments[1] = locale;
-    return segments.join("/");
-  };
+const Item = ({ code, title, setSelected, setOpened }) => {
+  const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
   return (
     <Button
       action={() => {
         setSelected(title);
         setOpened(false);
+        startTransition(() => {
+          router.replace(`/${code}`);
+        });
       }}
       style="ui"
       className="hover:bg-bglight/40"
     >
-      <Link href={redirectedPath(key)} className="w-full h-full">
-        {title}
-      </Link>
+      {title}
     </Button>
   );
 };
