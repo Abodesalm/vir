@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 const email = "ui@virgo.com";
 const password = "aaa";
 
-export const getSession = async () => {
+export const getStoredAuth = async () => {
   const session = await getIronSession<SessionData>(
     await cookies(),
     sessionOptions
@@ -23,7 +23,7 @@ export const login = async (
   prevState: { error: undefined | string },
   formData: FormData
 ) => {
-  const session = await getSession();
+  const session = await getStoredAuth();
   const formEmail = formData.get("email") as string;
   const formPassword = formData.get("password") as string;
 
@@ -31,7 +31,6 @@ export const login = async (
     return { error: "Wrong Crediantials!" };
   }
   session.email = formEmail;
-  session.password = formPassword;
   session.isLoged = true;
 
   await session.save();
@@ -39,6 +38,6 @@ export const login = async (
 };
 
 export const logout = async () => {
-  const session = await getSession();
+  const session = await getStoredAuth();
   session.destroy();
 };

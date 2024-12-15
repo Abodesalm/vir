@@ -1,4 +1,4 @@
-import { Processor } from "@/sections/Processor";
+import Processor from "@/sections/Processor";
 
 export default function page() {
   return (

@@ -3,9 +3,9 @@ import "@/public/css/globals.css";
 import Navbar from "@/sections/Navbar";
 import ToUp from "@/components/ToUp";
 import Providers from "./Providers";
-import Sidebar from "@/sections/Sidebar";
-import { getSession } from "@/actions";
-import Signin from "@/sections/Signin";
+import { AuthProvider } from "@/contexts/AuthContext";
+import AuthenticatedApp from "./AuthenticatedApp";
+import { getMessages, getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Virgo",
@@ -19,28 +19,21 @@ export default async function Layout({
   children: React.ReactNode;
   params: { lang: string };
 }>) {
-  const { isLoged } = await getSession();
   const { lang } = await params;
+  const navTranslations = await getTranslations("layoutNavbar");
+  const messages = await getMessages();
+  const navTranslation = navTranslations("signout");
   return (
     <html lang={lang}>
       <body>
-        <Providers>
-          <Navbar />
+        <Providers locale={lang} messages={messages}>
+          <Navbar t={navTranslation} />
           <div className="flex flex-row w-full">
-            {isLoged ? (
-              <>
-                <Sidebar />
-                <div
-                  className={`${
-                    isLoged ? "w-[86%]" : "w-full"
-                  } side-pad min-h-[80vh]`}
-                >
-                  {children}
-                </div>
-              </>
-            ) : (
-              <Signin />
-            )}
+            {
+              <AuthProvider>
+                <AuthenticatedApp>{children}</AuthenticatedApp>
+              </AuthProvider>
+            }
           </div>
           <ToUp />
         </Providers>

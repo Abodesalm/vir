@@ -2,8 +2,8 @@ import { SessionOptions } from "iron-session";
 
 export interface SessionData {
   email?: string;
-  password?: string;
   isLoged: boolean;
+  expiresAt?: number;
 }
 
 export const defaultSession: SessionData = {

@@ -12,6 +12,15 @@
   "signin": {
     "title": "hello, sign in",
     "button": "sign in",
-    "error": "wrong cridentials!"
+    "error": "wrong cridentials!",
+    "email": "email",
+    "password": "password"
+  },
+  "processor": {
+    "title": "document processor",
+    "nextButton": "next",
+    "skipButton": "skip",
+    "rejectButton": "reject",
+    "faildImage": "failed to load image"
   }
 }

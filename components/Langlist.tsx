@@ -60,6 +60,7 @@ export default function Langlist() {
 const Item = ({ code, title, setSelected, setOpened }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
+  const path = usePathname().split("/").splice(2).join("/");
 
   return (
     <Button
@@ -67,7 +68,7 @@ const Item = ({ code, title, setSelected, setOpened }) => {
         setSelected(title);
         setOpened(false);
         startTransition(() => {
-          router.replace(`/${code}`);
+          router.replace(`/${code}/${path}`);
         });
       }}
       style="ui"

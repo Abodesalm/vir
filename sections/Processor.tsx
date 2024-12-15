@@ -1,5 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { LogoutButton } from "@/components/processor/LogoutButton";
 import { DocumentImage } from "@/components/processor/DocumentImage";
 import { ProgressBar } from "@/components/processor/ProgressBar";
 import { Document, DocumentType } from "../types";
@@ -8,7 +10,8 @@ import { createSplitDocument } from "../services/api";
 import { fetchDocumentTypes } from "../services/documentTypes";
 import { getDocumentCount } from "../services/api";
 
-export function Processor() {
+export default function Processor() {
+  const { state } = useAuth();
   const [document, setDocument] = useState<Document | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -106,9 +109,19 @@ export function Processor() {
     loadDocumentCount();
   }, []);
 
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="text-xl font-semibold text-gray-600">Loading...</div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-gray-100">
-      <main className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen">
+      <main className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <h3 className="text-size-3 capitalize mb-2">document processor</h3>
+
         {error ? (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
             <p className="text-red-800">{error}</p>
@@ -152,8 +165,8 @@ export function Processor() {
                     onClick={handleRejectDocument}
                     disabled={isLoading}
                     className="w-full px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 
-                          focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2
-                          disabled:opacity-50 disabled:cursor-not-allowed"
+                            focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2
+                            disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Reject
                   </button>

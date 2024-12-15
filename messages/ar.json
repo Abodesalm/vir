@@ -12,6 +12,15 @@
   "signin": {
     "title": "مرحبا ، سجّل دخولك",
     "button": "تسجيل دخول",
-    "error": "بيانات خاطئة !"
+    "error": "بيانات خاطئة !",
+    "email": "عنوان الايميل",
+    "password": "كلمة السر"
+  },
+  "processor": {
+    "title": "معالج المستندات",
+    "nextButton": "التالي",
+    "skipButton": "تخطي",
+    "rejectButton": "رفض",
+    "faildImage": "فشل تحميل الصورة"
   }
 }

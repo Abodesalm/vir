@@ -1,13 +1,10 @@
-import { getSession } from "@/actions";
 import Icon from "@/components/Icon";
-import { getTranslations, getLocale } from "next-intl/server";
-import { useLocale } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 
-export default async function Sidebar() {
-  const locale = await getLocale();
-  const t = await getTranslations("layoutSidebar");
-  const { isLoged } = await getSession();
+export default function Sidebar() {
+  const locale = useLocale();
+  const t = useTranslations("layoutSidebar");
   const options = [
     { path: `/${locale}`, icon: "stats", text: t("statistics") },
     { path: `/${locale}/processor`, icon: "processor", text: t("processor") },
@@ -21,9 +18,7 @@ export default async function Sidebar() {
   ];
   return (
     <div
-      className={`w-[14%] bg-light/50 dark:bg-middark px-6 py-4 flex flex-col items-start gap-4 sticky top-4  ${
-        isLoged ? "" : "hidden"
-      }`}
+      className={`w-[14%] bg-light/50 dark:bg-middark px-6 py-4 flex flex-col items-start gap-4 sticky top-4`}
     >
       {options.map((el) => {
         return (

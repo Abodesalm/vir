@@ -239,9 +239,11 @@ export function DocumentImage({
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center h-96 bg-gray-100 rounded-lg">
+      <div className="flex flex-col items-center justify-center h-96 bg-light dark:bg-darker rounded-lg">
         <ImageOff className="w-16 h-16 text-gray-400 mb-4" />
-        <p className="text-gray-600 mb-4">Failed to load image</p>
+        <p className="text-gray-600 dark:text-gray-400 mb-4">
+          Failed to load image
+        </p>
         {retryCount < MAX_RETRIES && (
           <button
             onClick={onRetry}
