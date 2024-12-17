@@ -1,26 +1,27 @@
 {
-  "layoutNavbar": {
-    "signout": "تسجيل خروج"
+  "navbar": {
+    "signout": "تسجيل الخروج"
   },
 
-  "layoutSidebar": {
-    "statistics": "إحصائيات",
-    "processor": "معالجة",
-    "documents": "مستندات",
-    "settings": "إعدادات"
+  "sidebar": {
+    "statistics": "الإحصائيات",
+    "processor": "المعالج",
+    "documents": "المستندات",
+    "settings": "settings"
   },
   "signin": {
-    "title": "مرحبا ، سجّل دخولك",
-    "button": "تسجيل دخول",
-    "error": "بيانات خاطئة !",
-    "email": "عنوان الايميل",
+    "title": "سجل الدخول لحسابك",
+    "button": "تسجيل الدخول",
+    "button_loading": "جاري التسجيل...",
+    "email": "عنوان البريد الإلكتروني",
     "password": "كلمة السر"
   },
   "processor": {
-    "title": "معالج المستندات",
-    "nextButton": "التالي",
-    "skipButton": "تخطي",
-    "rejectButton": "رفض",
-    "faildImage": "فشل تحميل الصورة"
+    "title": "document processor",
+    "welcome": "welcome, ",
+    "next_btn": "التالي",
+    "skip_btn": "تخطي",
+    "reject_btn": "reject",
+    "failed_image": "failed to load image"
   }
 }

@@ -1,26 +1,38 @@
 {
-  "layoutNavbar": {
+  "not_found": {
+    "not_found": "404 page not found"
+  },
+  "navbar": {
     "signout": "sign out"
   },
 
-  "layoutSidebar": {
+  "sidebar": {
     "statistics": "statistics",
     "processor": "processor",
     "documents": "documents",
     "settings": "settings"
   },
   "signin": {
-    "title": "hello, sign in",
+    "title": "sign in to your account",
     "button": "sign in",
-    "error": "wrong cridentials!",
+    "button_loading": "signing in...",
     "email": "email",
     "password": "password"
   },
   "processor": {
     "title": "document processor",
-    "nextButton": "next",
-    "skipButton": "skip",
-    "rejectButton": "reject",
-    "faildImage": "failed to load image"
+    "welcome": "welcome, ",
+    "next_btn": "next",
+    "skip_btn": "skip",
+    "reject_btn": "reject",
+    "cancel_btn": "cancel",
+    "submit_btn": "submit",
+    "submit_next_btn": "submit & next",
+    "failed_image": "failed to load image",
+    "failed_resize": "failed to resize document",
+    "failed_rotate": "failed to rotate document",
+    "select_type": "select document type",
+    "cropped_preview": "cropped image preview",
+    "doc_categorized": "documents categorized"
   }
 }

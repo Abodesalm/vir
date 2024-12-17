@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 interface ProgressBarProps {
   current: number;
   total: number;
@@ -5,12 +7,13 @@ interface ProgressBarProps {
 
 export function ProgressBar({ current, total }: ProgressBarProps) {
   const percentage = Math.round((current / total) * 100);
+  const t = useTranslations("processor");
 
   return (
     <div className="w-full">
       <div className="flex justify-between text-sm text-gray-600 mb-1">
         <span>
-          {current} of {total} documents categorized
+          {current} / {total} {t("doc_categorized")}
         </span>
         <span>{percentage}%</span>
       </div>

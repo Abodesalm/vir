@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useAuth } from "@/contexts/AuthContext";
-import { LogoutButton } from "@/components/processor/LogoutButton";
 import { DocumentImage } from "@/components/processor/DocumentImage";
 import { ProgressBar } from "@/components/processor/ProgressBar";
 import { Document, DocumentType } from "../types";
@@ -9,6 +8,7 @@ import { fetchNextDocument, updateDocument } from "../services/document";
 import { createSplitDocument } from "../services/api";
 import { fetchDocumentTypes } from "../services/documentTypes";
 import { getDocumentCount } from "../services/api";
+import { useTranslations } from "next-intl";
 
 export default function Processor() {
   const { state } = useAuth();
@@ -18,6 +18,7 @@ export default function Processor() {
   const [documentTypes, setDocumentTypes] = useState<DocumentType[]>([]);
   const [totalDocuments, setTotalDocuments] = useState(0);
   const [processedCount, setProcessedCount] = useState(0);
+  const t = useTranslations("processor");
 
   const loadNextDocument = async () => {
     setIsLoading(true);
@@ -111,8 +112,8 @@ export default function Processor() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="text-xl font-semibold text-gray-600">Loading...</div>
+      <div className="flex justify-center items-center h-[70vh] w-full">
+        <div className="loader text-accent"></div>
       </div>
     );
   }
@@ -120,7 +121,15 @@ export default function Processor() {
   return (
     <div className="min-h-screen">
       <main className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 py-2">
-        <h3 className="text-size-3 capitalize mb-2">document processor</h3>
+        <div className="capitalize mb-2">
+          <h3 className="text-size-3">{t("title")}</h3>
+          {state.user && (
+            <span className="ml-4 text-sm text-gray-500">
+              {t("welcome")}
+              {state.user.name}
+            </span>
+          )}
+        </div>
 
         {error ? (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
@@ -150,7 +159,7 @@ export default function Processor() {
                             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
                             disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Next
+                    {t("next_btn")}
                   </button>
                   <button
                     onClick={loadNextDocument}
@@ -159,7 +168,7 @@ export default function Processor() {
                             focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2
                             disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Skip
+                    {t("skip_btn")}
                   </button>
                   <button
                     onClick={handleRejectDocument}
@@ -168,7 +177,7 @@ export default function Processor() {
                             focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2
                             disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Reject
+                    {t("reject_btn")}
                   </button>
                 </div>
                 <ProgressBar current={processedCount} total={totalDocuments} />

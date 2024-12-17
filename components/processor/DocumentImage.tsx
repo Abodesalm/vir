@@ -13,6 +13,7 @@ import {
   updateContainerSize,
   calculateCropDimensions,
 } from "../../utils/imageScaling";
+import { useTranslations } from "next-intl";
 
 interface DocumentImageProps {
   src: string;
@@ -55,6 +56,8 @@ export function DocumentImage({
 
   const imageUrl = getStorageUrl(src);
 
+  const t = useTranslations("processor");
+
   useEffect(() => {
     let mounted = true;
 
@@ -72,13 +75,13 @@ export function DocumentImage({
           credentials: "include",
         });
 
-        if (!response.ok) throw new Error("Failed to load image");
+        if (!response.ok) throw new Error(t("failed_image"));
 
         if (mounted) {
           setIsLoading(false);
         }
       } catch (err) {
-        console.error("Failed to load image:", err);
+        console.error(`${t("failed_image")}:`, err);
         if (mounted) {
           setRetryCount((prev) => prev + 1);
           setError(true);
@@ -114,7 +117,7 @@ export function DocumentImage({
       }
       setRotation((prev) => (prev + 90) % 360);
     } catch (err) {
-      console.error("Failed to rotate document:", err);
+      console.error(`${t("failed_rotate")}:`, err);
     }
   };
 
@@ -134,7 +137,7 @@ export function DocumentImage({
         imageRef.current.src = newUrl;
       }
     } catch (err) {
-      console.error("Failed to resize document:", err);
+      console.error(`${"failed_resize"}:`, err);
     } finally {
       setIsResizing(false);
     }
@@ -241,8 +244,8 @@ export function DocumentImage({
     return (
       <div className="flex flex-col items-center justify-center h-96 bg-light dark:bg-darker rounded-lg">
         <ImageOff className="w-16 h-16 text-gray-400 mb-4" />
-        <p className="text-gray-600 dark:text-gray-400 mb-4">
-          Failed to load image
+        <p className="text-gray-600 dark:text-gray-400 mb-4 first-letter:uppercase">
+          {t("failed_image")}
         </p>
         {retryCount < MAX_RETRIES && (
           <button

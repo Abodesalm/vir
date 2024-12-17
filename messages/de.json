@@ -1,17 +1,27 @@
 {
-  "layoutNavbar": {
-    "signout": "signen out"
+  "navbar": {
+    "signout": "sign out"
   },
 
-  "layoutSidebar": {
-    "statistics": "statistiche",
-    "processor": "processoren",
-    "documents": "documente",
-    "settings": "settinch"
+  "sidebar": {
+    "statistics": "statistics",
+    "processor": "processor",
+    "documents": "documents",
+    "settings": "settings"
   },
   "signin": {
-    "title": "hallo, signen in",
-    "button": "signen in",
-    "error": "wronge cridentialen!"
+    "title": "sign in to your account",
+    "button": "sign in",
+    "button_loading": "signing in...",
+    "email": "email",
+    "password": "password"
+  },
+  "processor": {
+    "title": "document processor",
+    "welcome": "welcome, ",
+    "next_btn": "next",
+    "skip_btn": "skip",
+    "reject_btn": "reject",
+    "failed_image": "failed to load image"
   }
 }

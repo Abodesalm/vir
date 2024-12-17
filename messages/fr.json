@@ -1,17 +1,27 @@
 {
-  "layoutNavbar": {
-    "signout": "la sign out"
+  "navbar": {
+    "signout": "sign out"
   },
 
-  "layoutSidebar": {
-    "statistics": "les statistics",
-    "processor": "le processor",
-    "documents": "les documents",
-    "settings": "les settings"
+  "sidebar": {
+    "statistics": "statistics",
+    "processor": "processor",
+    "documents": "documents",
+    "settings": "settings"
   },
   "signin": {
-    "title": "salut, sign in",
+    "title": "sign in to your account",
     "button": "sign in",
-    "error": "des wrong cridentials!"
+    "button_loading": "signing in...",
+    "email": "email",
+    "password": "password"
+  },
+  "processor": {
+    "title": "document processor",
+    "welcome": "welcome, ",
+    "next_btn": "next",
+    "skip_btn": "skip",
+    "reject_btn": "reject",
+    "failed_image": "failed to load image"
   }
 }

@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import ReactCrop, { Crop } from "react-image-crop";
 import { getImageTransform } from "../../utils/imageScaling";
 

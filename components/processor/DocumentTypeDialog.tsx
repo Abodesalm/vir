@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { DocumentType } from "../../types";
 import { DocumentTypeList } from "./DocumentTypeList";
 import { ImagePreview } from "./ImagePreview";
+import { useTranslations } from "next-intl";
 
 interface DocumentTypeDialogProps {
   isOpen: boolean;
@@ -49,6 +50,7 @@ export function DocumentTypeDialog({
   useEffect(() => {
     window.addEventListener("keypress", handleKeyPress);
     return () => window.removeEventListener("keypress", handleKeyPress);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [documentTypes]);
 
   const handleSubmit = (shouldProceedNext: boolean = false) => {
@@ -59,13 +61,17 @@ export function DocumentTypeDialog({
     }
   };
 
+  const t = useTranslations("processor");
+
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 max-w-2xl w-full mx-4">
         <div className="flex justify-between items-start mb-6">
-          <h2 className="text-xl font-semibold">Select Document Type</h2>
+          <h2 className="text-xl font-semibold capitalize">
+            {t("select_type")}
+          </h2>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -87,25 +93,25 @@ export function DocumentTypeDialog({
         <div className="mt-6 flex justify-end gap-3">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
+            className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors capitalize"
           >
-            Cancel
+            {t("cancel_btn")}
           </button>
           <button
             onClick={() => handleSubmit(false)}
             disabled={!selectedType}
             className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 
-                     disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    disabled:opacity-50 disabled:cursor-not-allowed transition-colors capitalize"
           >
-            Submit
+            {t("submit_btn")}
           </button>
           <button
             onClick={() => handleSubmit(true)}
             disabled={!selectedType}
             className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 
-                     disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    disabled:opacity-50 disabled:cursor-not-allowed transition-colors capitalize"
           >
-            Submit & Next
+            {t("submit_next_btn")}
           </button>
         </div>
       </div>

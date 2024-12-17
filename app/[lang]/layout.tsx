@@ -5,7 +5,7 @@ import ToUp from "@/components/ToUp";
 import Providers from "./Providers";
 import { AuthProvider } from "@/contexts/AuthContext";
 import AuthenticatedApp from "./AuthenticatedApp";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Virgo",
@@ -20,14 +20,12 @@ export default async function Layout({
   params: { lang: string };
 }>) {
   const { lang } = await params;
-  const navTranslations = await getTranslations("layoutNavbar");
   const messages = await getMessages();
-  const navTranslation = navTranslations("signout");
   return (
     <html lang={lang}>
       <body>
         <Providers locale={lang} messages={messages}>
-          <Navbar t={navTranslation} />
+          <Navbar />
           <div className="flex flex-row w-full">
             {
               <AuthProvider>

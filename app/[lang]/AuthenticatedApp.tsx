@@ -8,7 +8,7 @@ export default function AuthenticatedApp({ children }) {
 
   if (state.isLoading) {
     return (
-      <div className="flex justify-center items-center h-[70vh]">
+      <div className="flex justify-center items-center h-[70vh] w-full">
         <div className="loader text-accent"></div>
       </div>
     );

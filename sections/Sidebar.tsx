@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Sidebar() {
   const locale = useLocale();
-  const t = useTranslations("layoutSidebar");
+  const t = useTranslations("sidebar");
   const options = [
     { path: `/${locale}`, icon: "stats", text: t("statistics") },
     { path: `/${locale}/processor`, icon: "processor", text: t("processor") },
